@@ -1,0 +1,52 @@
+<body onload="load();" onkeypress="processKeyPress(event);">
+<%= javascript_include_tag "gametest"  %>
+<%= javascript_include_tag "sprite"  %>
+<%= javascript_include_tag "gameengine"  %>
+<%= javascript_include_tag "game_engine_classes" %>
+
+<%= link_to "World editor", "/worldeditor" %>
+
+<div >
+  <canvas id="canvas" width="500" height="500" onclick="processClick(event);"  style="border: solid 1px black;"></canvas>
+</div>
+<button onclick="start();" >Start/Stop timed event</button>
+
+<div class="map_holder">
+  <table class="map_table" onclick="selectSquare(event);">
+    <% @width.times do |i| %>
+      <tr>
+        <% @height.times do |j| %>
+          <td id="<%=h "map_cell_#{i}_#{j}"%>" class="map_cell">
+            <% if(i==@unit_x && j==@unit_y) %>
+              <%= image_tag "green_knight_east.bmp", :size => "50x50", :class => "unit_image" %>
+            <% end %>
+          </td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="game_info">
+  <h2>Resources</h2>
+  <table class="resource_table">
+    <tr>
+      <td class="lumber_row">Lumber</td>
+      <td id="lumber_total" class="lumber_row">0</td>
+      <td id="lumber_rate" class="lumber_row">0</td>
+    </tr>
+    <tr>
+      <td class="gold_row">Gold</td>
+      <td id="gold_total" class="gold_row">0</td>
+      <td id="gold_rate" class="gold_row">0</td>
+    </tr>
+    <tr>
+      <td class="iron_row">Iron</td>
+      <td id="iron_total" class="iron_row">0</td>
+      <td id="iron_rate" class="iron_row">0</td>
+    </tr>
+  </table>
+  
+</div>
+
+<div id="preloadedimages" ><canvas id="preloadcanvas" width =" 400" height="400" style="border: black solid 1px;"></canvas></div>
+</body>

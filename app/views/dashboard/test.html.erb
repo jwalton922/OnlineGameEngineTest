@@ -1,0 +1,33 @@
+<head>
+
+  <script type="text/javascript">
+  var canvas;
+  var context;
+  var hero = document.getElementById("hero");
+  var refresh = true;
+  var fps = 30;
+  var hero2;
+
+  function start() {
+    time = 1000 / 30
+    canvas = document.getElementById("gameCanvas");
+    context = canvas.getContext("2d");
+    hero2 = new Image();
+    hero2.src = "images/green_knight_east.bmp";
+
+    draw();
+
+  }
+
+  function draw() {
+
+    
+    context.drawImage(hero2, 100, 100);
+    setTimeout("draw()", time);
+  }
+  </script>
+</head>
+<body onload="start();">
+  <img id="hero" src="images/green_knight_east.bmp" alt="Hero" width="64" height="64" style="display: none"/>
+  <canvas style="border:black solid 1px;" id="gameCanvas" width="500" height="500" > </canvas>
+</body>
